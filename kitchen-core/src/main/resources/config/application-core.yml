@@ -1,0 +1,40 @@
+spring:
+  config:
+    import:
+      - classpath:/config/application-core-datasource.yml
+      - classpath:/config/application-core-redis.yml
+      - classpath:/config/application-core-rabbitmq.yml
+      - classpath:/config/application-core-qinqiu.yml
+      - classpath:/config/application-core-mail.yml
+  application:
+    name: ${KITCHEN_APPLICATION_NAME:kitchen}
+
+  session:
+    store-type: redis
+
+# MyBatis
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true #驼峰
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #日志  打印sql
+    iinterceptors:
+      - com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor #分页插件（PageHelper）
+  mapper-locations: classpath:mappers/*.xml # 配置 Mapper 文件的位置
+  type-aliases-package: com.wwz.kitchen.persistence.beans # 配置实体类扫描路径
+  global-config:
+    db-config:
+      id-type: auto # 主键策略
+      field-strategy: not_empty # 字段策略，空字段不更新
+      sql-performance-analysis: true # 开启 SQL 性能分析
+      sql-performance-max-time: 2000 # 设定最大执行时间，超过该时间将会报警
+    sql-parser-cache: true # 启用 SQL 解析缓存
+
+# jwt
+jwt:
+  secret: ${KITCHEN_JWT_SECRET:kitchenToken}
+  expiration: ${KITCHEN_JWT_EXPIRATION:2592000000} #一个月
+
+#自定义
+app:
+  version: ${KITCHEN_WEB_VERSION:v1.0.0}
+  enableRedisCache: ${KITCHEN_ENABLE_REDIS_CACHE:false}

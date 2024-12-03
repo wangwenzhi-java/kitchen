@@ -1,0 +1,36 @@
+services:
+  kitchen-web:
+    build:
+      context: /root/kitchen_web/  # 指向 kitchen-web.jar 所在目录
+      dockerfile: Dockerfile
+    image: kitchen/kitchen-web:latest  # 指定镜像名称和标签
+    container_name: kitchen-web-container
+    ports:
+      - "8888:8888"  # 将容器的 8888 端口映射到主机的 8888 端口
+    restart: always  # 确保容器在失败时自动重启
+    networks:
+      - kitchen_network  # 连接到指定网络
+    hostname: kitchen-web-host  # 设置容器的主机名
+    volumes:
+      - ${KITCHEN_WEB_DIR}:/var/tmp/kitchen  # 挂载宿主机目录到容器
+    env_file:
+      - .env  # 使用 .env 文件定义环境变量
+  chat-web:
+    build:
+      context: /root/chat_web/
+      dockerfile: Dockerfile
+    image: kitchen/chat-web:latest
+    container_name: chat-web-container
+    ports:
+      - "8899:8899"
+    restart: always  # 确保容器在失败时自动重启
+    networks:
+      - kitchen_network  # 连接到指定网络
+    hostname: chat-web-host  # 设置容器的主机名
+    volumes:
+      - ${KITCHEN_WEB_DIR}:/var/tmp/chat  # 挂载宿主机目录到容器
+    env_file:
+      - .env  # 使用 .env 文件定义环境变量
+networks:
+  kitchen_network:
+    driver: bridge  # 使用 bridge 网络驱动

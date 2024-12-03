@@ -1,0 +1,42 @@
+spring:
+  rabbitmq:
+    host: ${KITCHEN_RABBITMQ_HOST:120.46.8.55}
+    port: ${KITCHEN_RABBITMQ_PORT:5672}
+    username: ${KITCHEN_RABBITMQ_USERNAME:chatMq}
+    password: ${KITCHEN_RABBITMQ_PASSWORD:chatMq}
+    virtual-host: chat  # 虚拟主机
+    publisher-confirm-type: correlated  # 启用确认机制（生产者）
+    publisher-returns: true  # 启用消息返回功能，若消息无法路由到队列则返回给生产者
+    listener:
+      simple:
+        auto-declare: true    #启用自动声明
+        concurrency: 3        # 设置消费者并发数
+        max-concurrency: 10   # 设置最大并发数
+    exchanges:
+      chat_direct_exchange: # 定义 direct 类型的交换机
+        name: "chat_direct_exchange"
+        type: "direct"
+      log_direct_exchange:
+        name: "log_direct_exchange"
+        type: "direct"
+    queues:
+      - name: "friend_request_queue"
+        routingKey: "friendRequest"
+      - name: "friend_message_queue"
+        routingKey: "friendMessage"
+      - name: "system_notification_queue"
+        routingKey: "systemNotification"
+      - name: "order_reminder_queue"
+        routingKey: "orderReminder"
+      - name: "log_save_queue"
+        routingKey: "logSave"
+    bindings:
+      - exchange: "chat_direct_exchange"
+        queue: "friend_request_queue"
+        routing-key: "friendRequest"
+      - exchange: "chat_direct_exchange"
+        queue: "friend_message_queue"
+        routing-key: "friendMessage"
+      - exchange: "log_direct_exchange"
+        queue: "log_save_queue"
+        routing-key: "logSave"

@@ -1,0 +1,25 @@
+spring:
+  #mail配置
+  mail:
+    # 指定默认MimeMessage的编码，默认为: UTF-8
+    default-encoding: UTF-8
+    protocol: smtp
+    # 指定SMTP server host.
+    host: ${KITCHEN_MAIL_HOST:smtpdm.aliyun.com}
+    port: ${KITCHEN_MAIL_PORT:465}
+    # 指定SMTP server的用户名.
+    username: ${KITCHEN_MAIL_USERNAME:misskey@wangwenzhi.online}
+    # 指定SMTP server登录密码:
+    password: ${KITCHEN_MAIL_PASSWORD:WwzZm01040406}
+    # 指定是否在启动时测试邮件服务器连接，默认为false
+    test-connection: false
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.ssl.protocols: TLSv1.2
+      # 腾讯/阿里企业邮箱 下两个配置必须！！！
+      mail.smtp.ssl.enable: true
+      # 指定SMTP server使用的协议，默认为: smtp
+      mail.smtp.socketFactoryClass: javax.net.ssl.SSLSocketFactory
+      mail.smtp.socketFactory.port: 465
+      mail.debug: true

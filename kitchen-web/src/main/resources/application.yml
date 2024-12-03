@@ -1,0 +1,43 @@
+# Server settings
+server:
+  port: 8888
+  # HTTP请求和响应头的最大量，以字节为单位，默认值为4096字节,超过此长度的部分不予处理,一般8K。解决java.io.EOFException: null问题
+  max-http-header-size: 8192
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: text/plain,text/css,text/xml,text/javascript,application/json,application/javascript,application/xml,application/xml+rss,application/x-javascript,application/x-httpd-php,image/jpeg,image/gif,image/png
+  tomcat:
+    remoteip:
+      remote-ip-header: X-Forwarded-for
+      protocol-header: X-Forwarded-Proto
+      port-header: X-Forwarded-Port
+    uri-encoding: UTF-8
+    max-swallow-size: 50MB
+    connection-timeout: 60s
+  servlet:
+    encoding:
+      enabled: true
+      force: true
+      force-response: true
+# SPRING PROFILES
+spring:
+  profiles:
+    active: '@profileActive@'
+    include: [ core ]
+  application:
+    name: kitchen-web
+  # HTTP ENCODING
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  messages:
+    encoding: UTF-8
+  # Java Management Extensions (JMX) 功能
+  jmx:
+    enabled: true
+    default-domain: agentservice
+  #banner
+  banner:
+    charset: UTF-8
