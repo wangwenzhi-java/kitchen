@@ -2,6 +2,9 @@
 	<strong>基于springboot开发，前端使用vue。</strong>
 </p>
 <p align="center">
+	<a target="_blank" href="https://github.com/wangwenzhi-java/kitchen/LICENSE">
+		<img src="https://img.shields.io/badge/license-GPL%20v3-yellow.svg" ></img>
+	</a>
 	<img src="https://img.shields.io/badge/springboot-2.7.13-Cyan.svg" ></img>
 	<img src="https://img.shields.io/badge/Maven-3.8.8-green.svg" ></img>
 	<a target="_blank" href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">
@@ -12,7 +15,7 @@
 	<img src="https://img.shields.io/badge/RabbitMq-4.0.2-pink.svg" ></img>
 </p>
 <p align="center">
-	<strong>地址：<a target="_blank" href='https://github.com/wangwenzhi-java/WBlog-master'>Github</a></strong>
+	<strong>地址：<a target="_blank" href='https://github.com/wangwenzhi-java/kitchen'>Github</a></strong>
 </p>
 <p align="center">
 	<strong>前端项目地址：<a target="_blank" href='https://github.com/wangwenzhi-java/kitchen_web'>Github</a></strong>
