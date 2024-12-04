@@ -1,5 +1,3 @@
-项目的初衷是和女朋友搭建一个小菜单系统，增加一点仪式感。
-后来就写了一堆乱七八糟的功能，顺便练习了一下vue。
 <p align="center">
 	<strong>基于springboot开发，前端使用vue。</strong>
 </p>
