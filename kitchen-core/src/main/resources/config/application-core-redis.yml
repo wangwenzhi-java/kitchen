@@ -17,7 +17,6 @@ spring:
       # 主节点的别名
       master: ${KITCHEN_REDIS_MASTER:mymaster}
       # sentinel服务的ip和端口
-      nodes: ${KITCHEN_REDIS_NODES:111.229.36.181:26379,120.46.8.55:26379,120.46.8.55:36379}
-    password: ${KITCHEN_REDIS_PASSWORD:wwz413819}
+      nodes: ${KITCHEN_REDIS_NODES:127.0.0.1:16379,127.0.0.1:26379,127.0.0.1:36379} # 这里是sentinel实例
+    password: ${KITCHEN_REDIS_PASSWORD:redis} # 如果有
     database: ${KITCHEN_REDIS_DATABASE:2}  # 数据库索引
-    ####### redis缓存服务配置 #######

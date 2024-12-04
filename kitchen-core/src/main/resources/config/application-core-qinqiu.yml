@@ -1,6 +1,6 @@
 #七牛云
 qiniu:
-  accessKey: ${KITCHEN_QINQIU_ACCESSKEY:uOFqgojSeJQ66Hysob1wWNiZW6YEfFNas6a7A3bH}
-  secretKey: ${KITCHEN_QINQIU_SECRETKEY:q8e5gW8N1rA-E8Z0a8CbN0avzP044Zvw3SRNuxM1}
-  bucketName: ${KITCHEN_QINQIU_BUCKETNAME:wblog1}
-  bucketDomain: ${KITCHEN_QINQIU_BUCKETDOMAIN:https://qinqiu.wangwenzhi.top/}
+  accessKey: ${KITCHEN_QINQIU_ACCESSKEY}
+  secretKey: ${KITCHEN_QINQIU_SECRETKEY}
+  bucketName: ${KITCHEN_QINQIU_BUCKETNAME}
+  bucketDomain: ${KITCHEN_QINQIU_BUCKETDOMAIN}

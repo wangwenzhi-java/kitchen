@@ -1,9 +1,9 @@
 spring:
   rabbitmq:
-    host: ${KITCHEN_RABBITMQ_HOST:120.46.8.55}
+    host: ${KITCHEN_RABBITMQ_HOST:127.0.0.1}
     port: ${KITCHEN_RABBITMQ_PORT:5672}
-    username: ${KITCHEN_RABBITMQ_USERNAME:chatMq}
-    password: ${KITCHEN_RABBITMQ_PASSWORD:chatMq}
+    username: ${KITCHEN_RABBITMQ_USERNAME:guest}
+    password: ${KITCHEN_RABBITMQ_PASSWORD:guest}
     virtual-host: chat  # 虚拟主机
     publisher-confirm-type: correlated  # 启用确认机制（生产者）
     publisher-returns: true  # 启用消息返回功能，若消息无法路由到队列则返回给生产者

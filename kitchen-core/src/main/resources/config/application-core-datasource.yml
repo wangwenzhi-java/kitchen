@@ -37,8 +37,7 @@ spring:
       # 数据源类型
       type: com.alibaba.druid.pool.DruidDataSource  # 使用 Druid 数据源
 
-    #测试：url: jdbc:mysql://${KITCHEN_DATASOURCE_HOST:127.0.0.1}:${KITCHEN_DATASOURCE_PORT:3306}/${KITCHEN_DATASOURCE_DATABASE_NAME:dblog}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false
     #线上↓
-    url: jdbc:mysql://${KITCHEN_DATASOURCE_HOST:120.46.8.55}:${KITCHEN_DATASOURCE_PORT:3306}/${KITCHEN_DATASOURCE_DATABASE_NAME:kitchen}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false
-    username: ${KITCHEN_DATASOURCE_USERNAME:wblog}
-    password: ${KITCHEN_DATASOURCE_PASSWORD:Wwz413819*}
+    url: jdbc:mysql://${KITCHEN_DATASOURCE_HOST:127.0.0.1}:${KITCHEN_DATASOURCE_PORT:3306}/${KITCHEN_DATASOURCE_DATABASE_NAME:kitchen}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false
+    username: ${KITCHEN_DATASOURCE_USERNAME:root}
+    password: ${KITCHEN_DATASOURCE_PASSWORD:root}
