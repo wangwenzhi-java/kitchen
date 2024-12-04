@@ -2,7 +2,7 @@
 	<strong>基于springboot开发，前端使用vue。</strong>
 </p>
 <p align="center">
-	<a target="_blank" href="https://github.com/wangwenzhi-java/kitchen/LICENSE">
+	<a target="_blank" href="https://github.com/wangwenzhi-java/kitchen/blob/master/LICENSE">
 		<img src="https://img.shields.io/badge/license-GPL%20v3-yellow.svg" ></img>
 	</a>
 	<img src="https://img.shields.io/badge/springboot-2.7.13-Cyan.svg" ></img>
