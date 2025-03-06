@@ -53,7 +53,7 @@ public class KitchenTopicServiceImpl extends ServiceImpl<KitchenTopicMapper, Kit
         kitchenTopicDTO.setTopicMedia(kitchenTopic.getTopicMedia());
         kitchenTopicDTO.setTopicType(kitchenTopic.getTopicType());
         kitchenTopicDTO.setUsername(kitchenUsers.getUsername());
-        kitchenTopicDTO.set
+       // kitchenTopicDTO.set
         return null;
     }
 }

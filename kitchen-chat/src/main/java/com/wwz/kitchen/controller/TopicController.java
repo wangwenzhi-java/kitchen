@@ -66,7 +66,7 @@ public class TopicController extends BaseController{
     /**
      * 发帖
      */
-    @CrossOrigin(origins = "http://localhost:8080", methods = {RequestMethod.POST, RequestMethod.GET}, allowCredentials = "true")
+/*    @CrossOrigin(origins = "http://localhost:8080", methods = {RequestMethod.POST, RequestMethod.GET}, allowCredentials = "true")
     @PostMapping("/publishTopic")
     @KitchenLogs(value = "用户发布帖子", platform = PlatformEnum.CHAT)
     public String publishTopic(@RequestBody KitchenTopicDTO kitchenTopicDTO, HttpServletRequest request) {
@@ -83,5 +83,5 @@ public class TopicController extends BaseController{
         } catch (Exception e) {
 
         }
-    }
+    }*/
 }
