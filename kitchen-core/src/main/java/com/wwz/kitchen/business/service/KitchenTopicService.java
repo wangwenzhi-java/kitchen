@@ -1,6 +1,7 @@
 package com.wwz.kitchen.business.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.wwz.kitchen.business.dto.KitchenTopicDTO;
 import com.wwz.kitchen.persistence.beans.KitchenTopic;
 
 /**
@@ -13,4 +14,7 @@ import com.wwz.kitchen.persistence.beans.KitchenTopic;
  */
 public interface KitchenTopicService extends IService<KitchenTopic> {
 
+    Integer pubTopic(KitchenTopicDTO kitchenTopicDTO, Integer uid);
+
+    KitchenTopicDTO getTopicByTopicId(Integer topicId);
 }

@@ -106,7 +106,7 @@ public class AuthController extends BaseController{
     @CrossOrigin(origins = "http://localhost:8080", methods = {POST,GET},allowCredentials = "true")
     @PostMapping("/register")
     @KitchenLogs(value = "用户注册",platform = PlatformEnum.KITCHEN)
-    public String register(@RequestBody @Valid KitchenUsersRegistryDTO kitchenUsersRegistryDTO, HttpServletRequest request) {
+    public String register(@RequestBody @Valid KitchenUsersRegistryDTO kitchenUsersRegistryDTO) {
         JSONObject res = new JSONObject();
         String email = kitchenUsersRegistryDTO.getEmail();
         KitchenUsers user = kitchenUsersService.getUserByEmail(email);

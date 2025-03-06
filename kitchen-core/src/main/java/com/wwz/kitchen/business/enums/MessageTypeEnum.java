@@ -17,7 +17,11 @@ public enum MessageTypeEnum {
     DO_REQUEST_SHARE_MENU(7,"处理共享菜单"),
     FRIEND_OPEN(8,"好友上线"),
     FRIEND_CLOSE(9,"好友下线"),
-    DELETE_FRIEND(10,"删除好友");
+    DELETE_FRIEND(10,"删除好友"),
+
+   TOPIC_PUBLISH(11,"发帖"),
+   COMMENTS_PUBLISH(12,"发评论"),
+   REPLY_PUBLISH(13,"回复评论");
 
     private int code;
     private String msg;

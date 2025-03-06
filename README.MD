@@ -21,6 +21,9 @@
 	<strong>前端项目地址：<a target="_blank" href='https://github.com/wangwenzhi-java/kitchen_web'>Github</a></strong>
 </p>
 <p align="center">
+	<strong>演示demo：<a target="_blank" href='https://miao.minlan.fun'>喵</a></strong>
+</p>
+<p align="center">
     <strong>邮箱：</strong>wwz@wangwenzhi.wang
 </p>
 

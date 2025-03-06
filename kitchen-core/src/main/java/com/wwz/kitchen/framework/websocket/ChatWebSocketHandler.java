@@ -6,17 +6,20 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.wwz.kitchen.business.dto.ChatMessageDTO;
 import com.wwz.kitchen.business.dto.FriendshipRabbitDto;
+import com.wwz.kitchen.business.dto.KitchenTopicDTO;
 import com.wwz.kitchen.business.enums.MessageTypeEnum;
 import com.wwz.kitchen.business.service.KitchenFriendshipService;
 import com.wwz.kitchen.business.service.KitchenUsersService;
 import com.wwz.kitchen.framework.security.JwtTokenUtil;
 import com.wwz.kitchen.persistence.beans.KitchenMenu;
 import com.wwz.kitchen.persistence.beans.KitchenPick;
+import com.wwz.kitchen.persistence.beans.KitchenTopic;
 import com.wwz.kitchen.persistence.beans.KitchenUsers;
 import com.wwz.kitchen.util.RabbitMqUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
@@ -241,6 +244,15 @@ public class ChatWebSocketHandler {
                 friendshipRabbitDto.setAccept(accepted);//处理状态 true or false
                 CompletableFuture.runAsync(() -> rabbitMqUtil.sendToRabbit(messageType,friendshipRabbitDto));
                 break;
+
+            case TOPIC_PUBLISH://发帖
+                String uname = SecurityContextHolder.getContext().getAuthentication().getName();
+                KitchenTopicDTO kitchenTopicDTO = new KitchenTopicDTO();
+
+                jsonObject.getJSONObject("data");
+            case COMMENTS_PUBLISH://评论
+            case REPLY_PUBLISH://回复
+
             case DELETE_FRIEND://删除好友的消息
                 chatMessageDTO.setType(MessageTypeEnum.DELETE_FRIEND.getCode());
                 chatMessageDTO.setSender(sendUid);

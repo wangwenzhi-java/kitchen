@@ -31,6 +31,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -201,14 +202,20 @@ public class KitchenMenuController extends BaseController {
             if (uid != 0) {
                 KitchenUserMode one = kitchenUserModeService.getUserModeByUid(uid);
                 if (one != null && one.getUserMode() == KitchenUserModeEnum.USER_DEFINED.getCode()) { //自定义模式
+                    Set<Integer> uniqueUids = new HashSet<>();
                     List<KitchenMenusShare> sharelist = kitchenMenusShareService.listByUid(uid);
-                    // 提取所有的 ShareFromUid 和 ShareToUid，并去重
-                    Set<Integer> uniqueUids = sharelist.stream()
-                            .flatMap(kitchenMenusShare -> {
-                                // 先获取 ShareFromUid 和 ShareToUid，然后将它们转换为流并合并
-                                return Stream.of(kitchenMenusShare.getShareFromUid(), kitchenMenusShare.getShareToUid());
-                            })
-                            .collect(Collectors.toSet()); // 将它们收集到一个 Set 中，Set 自动去重
+                    if (sharelist == null || sharelist.size() == 0) {//无共享
+                        uniqueUids.add(uid);
+                    } else { //有共享
+                        // 提取所有的 ShareFromUid 和 ShareToUid，并去重
+                        uniqueUids = sharelist.stream()
+                                .flatMap(kitchenMenusShare -> {
+                                    // 先获取 ShareFromUid 和 ShareToUid，然后将它们转换为流并合并
+                                    return Stream.of(kitchenMenusShare.getShareFromUid(), kitchenMenusShare.getShareToUid());
+                                })
+                                .collect(Collectors.toSet()); // 将它们收集到一个 Set 中，Set 自动去重
+                    }
+
                     List<KitchenMenu> list = kitchenMenuService.listByUidsAndCid(uniqueUids,cid);
                     if (list == null) {
                         list = new ArrayList<>();

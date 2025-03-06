@@ -41,6 +41,14 @@ public class QiniuService {
         return auth.uploadToken(qiniuConfig.getBucketName(), null, 3600, policy);
     }
 
+    /**
+     * 上传头像
+     * @param file
+     * @param request
+     * @return
+     * @throws QiniuException
+     * @throws IOException
+     */
     public String uploadAvatar(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws QiniuException,IOException{
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         // 生成上传凭证
@@ -60,6 +68,14 @@ public class QiniuService {
         }
     }
 
+    /**
+     * 上传菜单
+     * @param file
+     * @param request
+     * @return
+     * @throws QiniuException
+     * @throws IOException
+     */
     public String uploadMenu(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws QiniuException,IOException{
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         // 生成上传凭证
@@ -79,6 +95,14 @@ public class QiniuService {
         }
     }
 
+    /**
+     * 上传聊天图片
+     * @param file
+     * @param request
+     * @return
+     * @throws QiniuException
+     * @throws IOException
+     */
     public String uploadChatImage(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws QiniuException,IOException{
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         // 生成上传凭证
@@ -88,6 +112,34 @@ public class QiniuService {
         // 获取文件字节数组
         byte[] fileBytes = file.getBytes();
         String key = "oldCatKitchen/" + username +"/chatImages/"+ file.getOriginalFilename();  // 设置上传后的文件名
+        // 上传文件到七牛云
+        Response response = uploadManager.put(fileBytes, key, uploadToken);
+        // 获取上传结果
+        if (response.isOK()) {
+            return qiniuConfig.getBucketDomain() + key;  // 返回文件的 URL
+        } else {
+            return "";
+        }
+    }
+
+
+    /**
+     * 上传发帖图片
+     * @param file
+     * @param request
+     * @return
+     * @throws QiniuException
+     * @throws IOException
+     */
+    public String uploadTopicImage(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws QiniuException,IOException{
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        // 生成上传凭证
+        String uploadToken =getUploadToken();
+        Configuration cfg = new Configuration(Zone.autoZone());  //Zone.autoZone() 会根据七牛云的最佳选择自动选择区域配置
+        UploadManager uploadManager = new UploadManager(cfg);
+        // 获取文件字节数组
+        byte[] fileBytes = file.getBytes();
+        String key = "oldCatKitchen/" + username +"/topicImages/"+ file.getOriginalFilename();  // 设置上传后的文件名
         // 上传文件到七牛云
         Response response = uploadManager.put(fileBytes, key, uploadToken);
         // 获取上传结果

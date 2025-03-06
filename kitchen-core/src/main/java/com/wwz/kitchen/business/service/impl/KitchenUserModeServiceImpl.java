@@ -53,8 +53,9 @@ public class KitchenUserModeServiceImpl extends ServiceImpl<KitchenUserModeMappe
     @Override
     public boolean updateByUidAndUserMode(Integer uid, Integer kitchenUserMode) {
         UpdateWrapper<KitchenUserMode> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.lambda().set(KitchenUserMode::getUid,uid);
-        updateWrapper.lambda().set(KitchenUserMode::getUserMode, kitchenUserMode);  // 设置更新字段
+        updateWrapper.lambda()
+                .set(KitchenUserMode::getUserMode, kitchenUserMode)
+                .eq(KitchenUserMode::getUid, uid);  // 设置更新字段
         boolean update = this.update(updateWrapper);
         if (update) {//此处需更新缓存
             String methodName = "getUserModeByUid";
